@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jigyashu</title>
+    <style>
+        
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            background-color: #000000;
+            background-image:
+            repeating-linear-gradient(
+                to right, transparent 0 100px,
+                #25283b22 100px 101px
+            ),
+            repeating-linear-gradient(
+                to bottom, transparent 0 100px,
+                #25283b22 100px 101px
+            );
+        }
+        
+        body::before{
+            position: absolute;
+            width: min(1400px, 90vw);
+            top: 0%;
+            left: 0%;
+            height: 0%;
+            transform: translateX(-50%);
+            content: '';
+            background-image: url(bf.gif);
+            background-size: 100%;
+            background-repeat: no-repeat;
+            background-position: top center;
+            pointer-events: none;
+        }
+
+         /* Contact Form Section */
+         .contact {
+            background-color: #25283b;
+            padding: 50px 20px;
+            color: white;
+            text-align: center;
+        }
+
+        .contact h2 {
+            margin-bottom: 20px;
+            font-size: 32px;
+        }
+
+        .contact form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .contact input,
+        .contact textarea {
+            width: 80%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #333;
+            color: white;
+        }
+
+        .contact button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .contact button:hover {
+            background-color: #45a049;
+        }
+    </style>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="banner">
+        <div class="slider" style="--quantity: 10">
+            <div class="item" style="--position: 1"><img src="n1.jpg" alt=""></div>
+            <div class="item" style="--position: 2"><img src="n2.webp" alt=""></div>
+            <div class="item" style="--position: 3"><img src="n3.jpg" alt=""></div>
+            <div class="item" style="--position: 4"><img src="n4.jpg" alt=""></div>
+            <div class="item" style="--position: 5"><img src="n5.jpg" alt=""></div>
+            <div class="item" style="--position: 6"><img src="n6.jpg" alt=""></div>
+            <div class="item" style="--position: 7"><img src="n7.jpg" alt=""></div>
+            <div class="item" style="--position: 8"><img src="n8.jpg" alt=""></div>
+            <div class="item" style="--position: 9"><img src="n9.jpg" alt=""></div>
+            <div class="item" style="--position: 10"><img src="n10.jpg" alt=""></div>
+        </div>
+        <div class="content">
+            <h1 data-content="">
+                
+            </h1>
+            <div class="author">
+                <h2></h2>
+             
+            </div>
+            <div class="model"></div>
+        </div>
+    </div>
+    <!-- Contact Section -->
+    <div class="contact">
+        <h2>Contact Us</h2>
+        <form id="contactForm">
+            <input type="text" id="name" placeholder="Your Name" required>
+            <input type="email" id="email" placeholder="Your Email" required>
+            <textarea id="message" placeholder="Your Message" rows="4" required></textarea>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <script>
+        alert("Hey Welcome to our Website.")
+        const slider = document.querySelector('.slider');
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.item');
+        const totalSlides = slides.length;
+
+        function moveToSlide(slideIndex) {
+            slider.style.transform = `translateX(-${slideIndex * 100}%)`;
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;  // Wrap around to the first slide
+            moveToSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;  // Wrap around to the last slide
+            moveToSlide(currentSlide);
+        }
+
+        setInterval(nextSlide, 3000); // Automatically move to next slide every 3 seconds
+
+        // Contact Form Validation and Submission
+        const contactForm = document.getElementById('contactForm');
+
+        contactForm.addEventListener('submit', function(event) {
+            event.preventDefault();  // Prevent form submission for validation
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            // Basic validation
+            if (!name || !email || !message) {
+                alert('Please fill in all fields.');
+                return;
+            }
+
+            alert('Your message has been sent!');  // You can replace this with actual form submission logic
+            contactForm.reset();  // Reset the form after submission
+        });
+    </script>
+</body>
+</html>
